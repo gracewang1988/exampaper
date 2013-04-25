@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block t_title %}答题系统后台管理-登录页面{% endblock %}
+{% block t_css %}
+<link rel="stylesheet" type="text/css" href="/static/css/bg.css"></link>
+{% endblock %}
+{% block body %}
+<div class="login-wrap">
+    <form id="login-form" method="post" action="">
+    {% csrf_token %}
+    <div class="username">
+    <label id="id_username">用户名</label>{{ form.username }}
+    <span style="color:red;">{{ form.username.errors.as_text }}</span>
+    </div>
+    <div class="password">
+    <label id="id_password">密码</label>{{ form.password }}
+    <span style="color:red;">{{ form.password.errors.as_text }}</span>
+    </div>
+    <input class="bg_button login_button" type="submit" value="登录"/>
+    </form>
+</div>
+{% endblock %}

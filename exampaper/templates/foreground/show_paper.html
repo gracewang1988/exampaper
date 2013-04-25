@@ -1,0 +1,66 @@
+{% extends "foreground/home.html" %}
+
+{% block title %}作答试卷{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="/static/js/jquery-1.9.1.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var answer = new Array();
+        $("#answer_button").click(function(){
+            $("input[name^='radio_']:checked").each(function(i){
+                answer[i] = $(this).val();
+            });
+            if(answer.length < {{ paper.get_questions_count }}){
+                alert("还有题目未完成！");
+                return false;
+            }
+            else{
+                var answerstr = answer.join(",");
+                $.ajax({
+                  type: "POST",
+                  url: "/handle_answer",
+                  data: "paper_id={{ paper.id }}&answer=" + answerstr,
+                  success: function(response){
+                    eval("var response =" + response);
+                    var status = response.status;
+                    var data = response.data;
+                    if(status == 0){alert("提交失败，请重新答题！")}
+                    else if(status == 1){
+                        alert("答案提交成功，您的得分是: " + data["score"] + ", 您击败了" + data["beat_count"] + "个其他用户。");
+                        var correct_answer = data["correct_answer"].split(",");
+                        $("p[id^='content_']").each(function(i){
+                            if(correct_answer[i] == "1"){ correct_answer_str ="对"; }
+                            else if(correct_answer[i] == "0"){ correct_answer_str = "错"; }
+                            $(this).append("<span class='show_correct'>正确答案: " + correct_answer_str + "</span>");
+                        })
+                    }
+                    $("#answer_button").attr("disabled", "disabled");
+                  }
+                });
+            }
+        });
+    });
+</script>
+{% endblock %}
+
+{% block main %}
+<img height="1px" width="1px" src="/prepare_start/{{ paper.id }}"></img>
+<div id="main" class="main_wrapper">
+    <div id="content" class="content_wrapper">
+            <h2 class="title">{{ paper.title }}</h2>
+            <form id="answer_form" method="post" action="">
+            {% for question in paper.get_ordered_questions %}
+                <div>
+                <p id="content_{{ question.id }}">{{ forloop.counter }}、{{ question.content }}({{ question.score }}分)</p>
+                <p>
+                <input type="radio" class="correct" name="radio_{{ question.id }}" value="1">对</input>
+                <input type="radio" class="wrong" name="radio_{{ question.id }}" value="0">错</input>
+                </p>
+                </div>
+            {% endfor %}
+            <input type="button" class="answer_button" id="answer_button" name="button" value="提交"></input>
+            </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block t_title %}
+答题系统后台 --
+{% block title %}首页{% endblock %}
+{% endblock %}
+
+{% block t_css %}
+<link rel="stylesheet" type="text/css" href="/static/css/bg.css"></link>
+{% block css %}{% endblock %}
+{% endblock %}
+
+{% block t_js %}
+<script type="text/javascript" src="/static/js/jquery-1.9.1.js"></script>
+{% block js %}{% endblock %}
+{% endblock %}
+
+{% block body %}
+<div id="top-header">
+    <h2 style="text-align:center;">答题系统后台管理</h2>
+    <p style="font-size:13px;margin-left:50px;margin-right:50px;">
+        <span style="float:left">欢迎{{ request.user.username }} 进入后台管理</span>
+        <a href="{% url logout %}" style="float:right;">用户退出</a>
+    </p>
+    
+</div>
+<div id="left-panel">
+    <a class="operation" href="{% url bg_index %}">首页</a>
+    <a class="operation" href="{% url question_index %}">试题</a>
+    <a class="operation" href="{% url paper_index %}">试卷</a>
+</div>
+
+<div id="main-content">
+{% block main %}
+{% endblock %}
+</div>
+{% endblock %}

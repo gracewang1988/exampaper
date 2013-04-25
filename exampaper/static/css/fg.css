@@ -1,0 +1,139 @@
+body {
+    cursor: default;
+    font-family: "Helvetica Neue","Hiragino Sans GB","Segoe UI","Microsoft Yahei","微软雅黑",Tahoma,Arial,STHeiti,sans-serif;
+    font-size: 12px;
+}
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, a, code, em, img, q, small, strong, dd, dl, dt, li, ol, ul, fieldset, form, label, table, tbody, tr, th, td, input {
+    margin: 0;
+    padding: 0;
+}
+div#header-holder
+{
+    background-color: #144465;
+    height: 72px;
+}
+
+.clearfix:after, #content:after {
+    clear: both;
+    content: " ";
+    display: block;
+    height: 0;
+}
+.clear{
+    clear: both;
+}
+.startpage div#logo-holder, .no-login-status div#logo-holder {
+    width: 300px;
+}
+
+div#logo-holder {
+    float: left;
+    position: relative;
+    margin-left: 200px;
+}
+.main_wrapper{
+    margin-top: 30px;
+}
+.content_wrapper{
+    background-color: #DDE1E5;
+    width: 800px;
+    border-radius: 6px;
+    margin: 0 auto;
+}
+
+.content_wrapper h2{
+    padding-left: 30px;
+    padding-top: 20px;
+    color: #144465;
+    font-size: 17px;
+}
+.content_wrapper h2.title{
+    text-align: center;
+    color: #144465;
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+.content_wrapper form{
+    margin-left: 70px;
+}
+
+.content_wrapper form input.correct{
+    margin-left: 19px;
+}
+.content_wrapper form input.wrong{
+    margin-left: 30px;
+}
+.content_wrapper span.show_correct{
+    color:green;
+    margin-left: 8px;
+}
+.content_wrapper ul{
+    list-style-type: none;
+    padding-left: 30px;
+    padding-bottom: 30px;
+}
+
+.content_wrapper ul li a{
+    margin-left: 50px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.content_wrapper ul li a:hover{
+    text-decoration: underline;
+}
+.content_wrapper form input.answer_button{
+    padding:4px;
+    width: 80px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+#global-slogan {
+    color: #FFFFFF;
+    float: left;
+    font-size: 18px;
+    font-weight: normal;
+    height: 20px;
+    line-height: 20px;
+    margin-left: 3px;
+    padding-top: 38px;
+}
+
+div#content-holder {
+    background-color: #DCE0E4;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+#content{
+    width: 800px;
+    margin: 0 auto;
+    line-height: 32px;
+    font-size: 14px;
+}
+#content:after {
+    height: auto;
+}
+.clearfix:after, #content:after {
+    clear: both;
+    content: " ";
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+#content input.bg_radio{
+    margin-left: 20px;
+}
+.image_wrapper{
+    background: url("/static/images/blue-16.png") 0 0 no-repeat scroll transparent;
+    margin-top: 100px;
+    margin-left: 300px;
+    height: 256px;
+    width: 500px;
+    text-align: right;
+    font-size: 25px;
+    font-weight: bold;
+}
+.image_wrapper{
+    padding-top: 100px;
+}

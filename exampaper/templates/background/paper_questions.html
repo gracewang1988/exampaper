@@ -1,0 +1,83 @@
+{% extends "base_bg.html" %}
+
+{% block title %}试卷配置试题{% endblock %}
+{% block js %}
+<script type="text/javascript" src="/static/js/jquery-ui.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $( "#sortable" ).sortable();
+    $( "#sortable" ).disableSelection();
+    $("#config_questions").submit(function(){
+        var sortedIDs = $( "#sortable" ).sortable( "toArray" );
+        $("#sortstr").val(sortedIDs);
+        return true;
+    });
+});
+
+function add_question(question_id){
+    var li_obj = $("#question_"+question_id);
+    if(li_obj){
+    var content = $("#content_"+question_id).html();
+    li_obj.remove();
+    var li = "<li class='ui-state-default' id='" + question_id + "'>";
+    var a ="<a href='javascript:remove_question(\"" + question_id + "\");'>移除</a>";
+    var span = "<span id='my_content_" + question_id + "'>" +content + "</span></li>";
+    $("#sortable").append(li + a + span);
+    }
+    else{return;}
+}
+
+
+function remove_question(my_question_id){
+    var li_obj = $("#" + my_question_id);
+    if(li_obj){
+    var content = $("#my_content_"+my_question_id).html();
+    li_obj.remove();
+    var li = "<li class='ui-state-default' id='question_" + my_question_id + "'>";
+    var a = "<a href='javascript:add_question(\"" + my_question_id + "\");'>添加</a>";
+    var span = "<span id='content_" + my_question_id + "'>" + content + "</span></li>";
+    $("#all_questions").prepend(li + a + span);
+    }
+    else{return;}
+}
+
+</script>
+{% endblock %}
+
+{% block main %}
+<div class="create">
+    <p class="location">
+    <a href="{% url paper_index %}">试卷</a>
+    <<
+    <span>试卷配置试题</span>
+    </p>
+    <p style="color:green;font-size:13px;">{{ result }}</p>
+    <form id="config_questions" class="common_form" method="post" action="">
+    <input type="hidden" id="sortstr" name="sortstr" value=""></input>
+    <div class="left_panel">
+    <p><span>试卷：</span><span style="font-weight:bold;color:#3898BE;">{{ paper.name }}</span></p>
+    <ul id="sortable" class="sortable">
+    {% for my_question in paper_questions %}
+        <li class="ui-state-default" id="{{my_question.id}}">
+            <a href="javascript:remove_question('{{ my_question.id }}');" >移除</a>
+            <span id="my_content_{{ my_question.id }}">{{ my_question.content_for_short }}</span>
+        </li>
+    {% endfor %}
+     </ul>
+    </div>
+    <input type="submit" value="提交试卷试题" class="add_mark"/>
+    <div class="right_panel">
+    <p><span>所有试题(最新在最前面)</span></p>
+    <ul id="all_questions" class="all_objs">
+    {% for question in all_questions %}
+        <li id="question_{{ question.id }}" class="ui-state-default">
+            <a href="javascript:add_question('{{ question.id }}');" >添加</a>
+            <span id="content_{{ question.id }}">{{question.content_for_short}}</span>
+        </li>
+    {% endfor %}
+     </ul>
+    </div>
+    </form>
+</div>
+{% endblock %}
+

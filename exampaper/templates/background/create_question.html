@@ -1,0 +1,37 @@
+{% extends "base_bg.html" %}
+
+{% block title %}创建试题{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+
+</script>
+{% endblock %}
+
+{% block main %}
+<div class="create">
+    <p class="location">
+    <a href="{% url question_index %}">试题</a>
+    <<
+    <span>创建试题</span>
+    </p>
+    <p style="color:green;font-size:13px;">{{ result }}</p>
+    <form id="create_question" class="common_form" method="post" action="">
+        {{ form.content.label_tag }} {{ form.content }}
+        <span style="color:red;">{{ form.content.errors.as_text }}</span>
+<br/><br/>
+        {{ form.description.label_tag }}<br/>{{ form.description }}
+        <span style="color:red;">{{ form.description.errors.as_text }}</span>
+<br/><br/> 
+        {{ form.correct_answer.label_tag }} {{ form.correct_answer }}
+        <span style="color:blue;margin-left:5px;">(试题正确则选中，反之不选)</span>
+        <span style="color:red;">{{ form.correct_answer.errors.as_text }}</span>
+<br/><br/>
+        {{ form.score.label_tag }}{{ form.score }}
+        <span style="color:red;">{{ form.score.errors.as_text }}</span>
+<br/><br/>
+    <input type="submit" class="bg_button" value="添加" style="width:100px;"/>
+    </form>
+</div>
+{% endblock %}
+

@@ -1,0 +1,38 @@
+{% extends "base_bg.html" %}
+
+{% block title %}试卷详情{% endblock %}
+{% block main %}
+<div class="main-box">
+    <p class="location">
+    <a href="{% url paper_index %}">试卷</a>
+    <<
+    <span>试卷详情</span>
+    </p>
+    <p class="paper_row"><label>试卷名称: </label><span>{{ paper.name }}</span></p>
+    <p class="paper_row"><label>试卷标题: </label><span>{{ paper.title }}</span></p>
+    <p class="paper_row"><label>试卷总分数: </label><span>{{ paper.get_total_scores }}</span></p>
+    <p class="paper_row"><label>试卷答题人数: </label><span>{{ paper.get_answer_num }}</span></p>
+    <p class="paper_row"><label>试卷答题详情: </label></p>
+    <table class="display">
+        <thead>
+            <th>用户ip</th>
+            <th>用户user_agent</th>
+            <th>用户得分数</th>
+            <th>用户回答时间</th>
+        </thead>
+        
+        <tbody>
+            {% for answer in paper.get_all_answers %}
+                <tr>
+                    <td style="text-align:left;">{{ answer.ip }}</td>
+                    <td>{{ answer.user_agent }}</td>
+                    <td>{{ answer.scores }}</td>
+                    <td>{{ paper.instime|date:'Y-m-d G:i:s' }}</td>
+                </tr>
+            {% empty %}
+                <tr><td colspan="6">没有任何答题记录！！！</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

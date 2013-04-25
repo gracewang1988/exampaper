@@ -1,0 +1,247 @@
+html, body, h1, h2, h3, h4, h5, h6, div, span, blockquote, p, address, form, fieldset, img, ul, ol, dl, dt, dd, li, hr, table, td, th, strong, em, sup, sub, dfn, ins, del, q, cite, var, samp, code, kbd, tt, pre {
+	line-height: 1.5em;
+}
+
+body {
+	padding:10px 30px;
+}
+
+input, textarea, select, option, optgroup, button, td, th {
+	font-size: 100%;
+}
+
+p, blockquote, address, form, pre, dl{
+	margin-bottom:15px;
+}
+
+.clear {
+	clear:both;
+}
+
+body, input, textarea {
+	color: #333333;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+	font-size: 75%;
+}
+
+form
+{
+	margin: 0;
+	padding: 0;
+}
+
+
+#top-header{height: 65px;border-bottom: 2px solid #29C2BD;}
+.operation{
+    text-align:center;
+    font-size:14px;
+    color:white;
+    margin: 5px 8px 5px 8px;
+    width:180px;
+    background-color:#3898BE;
+    padding:5px;
+    border-radius: 5px 5px 5px 5px;
+    display: block;
+}
+
+#left-panel{
+    height:300px;
+    width:206px;
+    float: left;
+    border: solid 2px #29C2BD;
+    border-top: none;
+}
+
+#left-panel a{
+    text-decoration:none;
+}
+
+#left-panel a:hover{
+   text-decoration: underline;
+}
+#main-content{
+    margin-left:210px;
+    border-width:2px;
+    border-color:#C9D7F1;
+    padding-left: 30px;
+}
+div.login-wrap{
+    margin: 0 auto; 
+    width: 288px;
+    text-align:center;
+    padding-top:50px;
+    border-radius: 6px;
+}
+div.username label, div.password label{
+    color: #444444;
+    font-size: 13px;
+    line-height: 36px;
+    margin-right: 15px;
+}
+div.username input, div.password input{
+    background: none repeat scroll 0 0 transparent;
+    border: 1px solid #AFB0B0;
+    height: 14px;
+    margin-left: 5px;
+    outline: medium none;
+    padding: 8px 0;
+    width: 250px;
+}
+
+input.login_button{
+    width:100px;margin-top: 25px;
+}
+form.common_form label{
+    color: #444444;
+    line-height: 36px;
+    font-size: 13px;
+}
+
+form.common_form input[type="text"]{
+    background: none repeat scroll 0 0 transparent;
+    padding: 8px 0;
+    border: 1px solid #AFB0B0;
+    height: 14px;
+    width: 250px;
+    outline: medium none;
+    margin-left: 5px;
+}
+
+form.common_form textarea{
+    background: none repeat scroll 0 0 transparent;
+    border: 1px solid #AFB0B0;
+    width: 350px;
+    outline: medium none;
+}
+div.question_title{
+    margin-top: 30px;
+    width: 410px;
+    padding: 5px 5px 5px 10px;
+    border-radius: 6px 6px 6px 6px;
+    border: 1px solid #3898BE;
+    background-color: #3898BE;
+    color: white;
+    font-weight: bold;
+}
+div.choice_questions{
+    width: 420px;
+    border: 3px solid #3898BE;
+    margin-bottom: 30px;
+    height: 500px;
+}
+p.location{
+    background-color: #EDEDED;
+    width: 340px;
+    padding: 8px 20px;
+    margin-top: 20px;
+    font-size: 14px;
+    border: 1px solid #AFB0B0;
+    margin-bottom: 30px;
+}
+p.location a{
+    color: #3898BE;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+p.location span{
+    font-weight: bold;
+    margin-left: 10px;
+}
+div.choice_questions p{
+    margin: 20px 10px;
+}
+div.choice_questions p a{
+    margin-left: 50px;
+    font-size: 13px;
+}
+.bg_button{
+    padding: 5px;
+    cursor: pointer;
+}
+div.left_panel{
+    float: left;
+    width:400px;
+    border: 2px solid #29C2BD;
+    
+}
+div.left_panel p, div.right_panel p{
+    text-align: center;
+    border-bottom: 2px solid #29C2BD;
+    margin:0;
+    padding:5px;
+}
+div.right_panel{
+    border: 2px solid #29C2BD;
+    float: right;
+    width: 400px;
+}
+.sortable, .all_objs{ list-style-type: none; margin: 23px; padding: 0;width:350px;}
+.ui-state-default{
+	border: 1px solid #d3d3d3;
+	background: #e6e6e6;
+	font-weight: normal;
+	color: #555555;
+	font-size: 13px;
+	padding: 5px 0px;
+	margin-bottom: 5px;
+}
+.ui-state-default a{
+    text-decoration: none;
+    position: relative;
+    left: 300px;
+}
+.add_mark{
+    width:100px;
+    margin-left: 70px;
+    margin-top: 100px;
+    padding: 10px;
+    cursor: pointer;
+}
+table.display{
+border: 1px solid #BFBFBF;
+text-align: center;
+width:1000px;
+}
+table.display th{color:white;font-size: 13px;background-color: #3898BE;
+border: 1px solid #BFBFBF;}
+table.display td{
+font-size:12px;
+border: 1px solid #BFBFBF;
+}
+
+div.pagination{margin-top: 10px;text-align:center;}
+span.step-links{font-size:12px;}
+
+div.main-box{
+    width: 100%;
+    height:700px;
+    padding-top:20px;
+    padding-left:10px;
+}
+div.main-box p.paper_row{
+    font-size: 15px;
+}
+
+div.main-box p.paper_row label{
+    font-weight: bold;
+    margin-right:8px;
+}
+a.create_button{
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 14px;
+    background: #3898BE; /* Old browsers */
+	background: -moz-linear-gradient(top, #B0C4DE 0%, #6CA6CD 49%, #3898BE 51%, #668B8B 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#B0C4DE), color-stop(49%,#6CA6CD), color-stop(51%,#3898BE), color-stop(100%,#668B8B)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #B0C4DE 0%,#6CA6CD 49%,#3898BE 51%,#668B8B 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #B0C4DE 0%,#6CA6CD 49%,#3898BE 51%,#668B8B 100%); /* Opera11.10+ */
+	background: -ms-linear-gradient(top, #B0C4DE 0%,#6CA6CD 49%,#3898BE 51%,#668B8B 100%); /* IE10+ */
+	background: linear-gradient(top, #B0C4DE 0%,#6CA6CD 49%,#3898BE 51%,#668B8B 100%);
+    color: white;
+}

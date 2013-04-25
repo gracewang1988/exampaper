@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block t_title %}
+{% block title %}首页{% endblock %}
+  --  答题系统
+{% endblock %}
+
+{% block t_css %}
+<link rel="stylesheet" type="text/css" href="/static/css/fg.css"></link>
+{% block css %}{% endblock %}
+{% endblock %}
+
+{% block t_js %}
+<script type="text/javascript" src="/static/js/jquery-1.9.1.js"></script>
+{% block js %}{% endblock %}
+{% endblock %}
+
+{% block body %}
+<div id="header-holder" class="startpage">
+    <div id="header" class="clearfix">
+         <div id="logo-holder">
+             <h2 id="global-slogan">答题系统</h2>
+         </div>
+    </div>
+</div>
+{% block main %}
+<div id="main" class="main_wrapper">
+    <div id="content" class="content_wrapper">
+        <h2>试卷仓库</h2>
+        <ul>
+        {% for paper in papers %}
+            <li>
+            <span>
+                {{forloop.counter}}、 {{ paper.name }} --- {{ paper.title }}
+            </span>
+            <a href="{% url show_paper paper.id %}" target="_blank">开始答题</a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "base_bg.html" %}
+
+{% block title %}试卷{% endblock %}
+{% block js %}
+<script type="text/javascript">
+function delete_paper(paper_id){
+    if(confirm("确定删除此记录？")){
+    $.ajax({
+        type: "POST",
+        url: "/bg/paper_delete",
+        data: "paper_id=" + paper_id,
+        success: function(msg){
+         if(msg == "error"){alert("删除失败，请重新操作！");}
+         else if(msg == "success"){
+             alert("删除记录成功！");
+             window.location.reload();
+         }
+   }
+}
+);}
+}
+</script>
+{% endblock %}
+{% block main %}
+<div class="main-box">
+<p><a class="create_button" href="{% url create_paper %}">创建试卷</a></p>
+    <table class="display">
+        <thead>
+            <th>试卷名称</th>
+            <th>试卷标题</th>
+            <th>试卷试题</th>
+            <th>答卷人数</th>
+            <th>创建时间</th>
+            <th>操作</th>
+        </thead>
+        
+        <tbody>
+            {% if papers %}
+                {% for paper in papers.object_list %}
+                    <tr>
+                        <td style="text-align:left;">{{ paper.name }}</td>
+                        <td>{{ paper.title }}</td>
+                        <td>
+                        {% for question in paper.get_ordered_questions %}
+                            <span>{{ question.content }}</span><br/>
+                        {% endfor %}
+                        </td>
+                        <td>{{ paper.get_answer_num }}</td>
+                        <td>{{ paper.instime|date:'Y-m-d G:i:s' }}</td>
+                        <td>
+                        <a href="{% url paper_questions paper.id %}">配置试题</a> || 
+                        <a href="{% url edit_paper paper.id %}" >修改</a> || <a 
+                            href="javascript:delete_paper('{{ paper.id }}');" >删除</a> || 
+                            <a href="{% url paper_detail paper.id %}" target="_blank">查看详情</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr><td colspan="6">没有任何试卷！！！</td></tr>
+            {% endif %}
+        </tbody>
+    </table>
+    
+    <div class="pagination">
+    <span class="step-links">
+        {% if papers.has_previous %}
+            <a href="?page={{ papers.previous_page_number }}">上一页</a>
+        {% endif %}
+        
+        <span class="current" style="margin-left:10px; margin-right:10px;">
+             {{ papers.number }}(共{{ papers.paginator.num_pages }}页)
+        </span>
+        
+        {% if papers.has_next %}
+            <a href="?page={{ papers.next_page_number }}">下一页</a>
+        {% endif %}
+    </span>
+</div>
+</div>
+{% endblock %}
